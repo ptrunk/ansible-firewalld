@@ -1,6 +1,6 @@
 # Firewalld Ansible Role
 
-Install and configure firewalld (http://www.firewalld.org/) on
+Install and configure firewalld (<http://www.firewalld.org/>) on
 
 * Archlinux
 * CentOS
@@ -25,7 +25,7 @@ firewalld_conf: {}
 
 ### Easy method
 
-This will use the ansible firewalld module (http://docs.ansible.com/ansible/latest/firewalld_module.html).
+This will use the ansible firewalld module (<http://docs.ansible.com/ansible/latest/firewalld_module.html>).
 
 ```yaml
 firewalld:
@@ -52,7 +52,9 @@ firewalld_ipsets:
   - type: ""
     short: ""
     description: ""
-    option: {}
+    option:
+    - name: ""
+      value: ""
     entry: []
 ```
 
@@ -88,7 +90,7 @@ Variable | Examples
 protocol | "tcp", "udp", "sctp", "dccp"
 target   | "ACCEPT", "%%REJECT%%", "DROP"
 
-```
+```yaml
 firewalld_zones:
   - name: ""
     short: ""

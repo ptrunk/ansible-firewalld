@@ -6,9 +6,10 @@
 {% if item.description is defined %}
   <description>{{ item.description }}</description>
 {% endif %}
-{% for name,value in item.option|default({}).items() %}
-  <option name="{{ name }}" value="{{ value }}"/>
-{% for %}
+{% for option in item.option|default([]) %}
+  <option name="{{ option.name }}" value="{{ option.value }}"/>
+{% endfor %}
 {% for entry in item.entry|default([]) %}
   <entry>{{ entry }}</entry>
+{% endfor %}
 </ipset>
