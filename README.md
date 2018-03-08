@@ -1,6 +1,7 @@
 # Firewalld Ansible Role
 
 Install and configure firewalld (http://www.firewalld.org/) on
+
 * Archlinux
 * CentOS
 * Fedora
@@ -8,21 +9,25 @@ Install and configure firewalld (http://www.firewalld.org/) on
 
 See Examples how to use this role.
 
-## Requirements:
+## Requirements
+
 * Ansible 2.3
 
 ## Configuration
 
-### firewalld.conf
+### Global firewalld.conf
+
 Change settings in `firewalld.conf`
-```
+
+```yaml
 firewalld_conf: {}
 ```
 
 ### Easy method
-This will use the ansible firewalld module (http://docs.ansible.com/ansible/latest/firewalld_module.html). 
 
-```
+This will use the ansible firewalld module (http://docs.ansible.com/ansible/latest/firewalld_module.html).
+
+```yaml
 firewalld:
   - immediate: true
     interface: ""
@@ -38,10 +43,11 @@ firewalld:
 
 ### Advanced method
 
-Define custom ipsets, services and zones in `/etc/firewalld`.  
+Define custom ipsets, services and zones in `/etc/firewalld`.
 
 #### ipset Definitions
-```
+
+```yaml
 firewalld_ipsets:
   - type: ""
     short: ""
@@ -62,7 +68,8 @@ hashsize | integer
 maxelem: | integer
 
 #### Service Definitions
-```
+
+```yaml
 firewalld_services:
   - name: ""
     short: ""
@@ -156,7 +163,7 @@ firewalld_zones:
 
 ### Add a new service
 
-```
+```yaml
 firewalld_services:
   - name: myservice
     short: "MYSERVICE"
@@ -167,8 +174,10 @@ firewalld_services:
 ```
 
 ### Change a common zone
+
 Redefine public zone and allow myservice and http(s)
-```
+
+```yaml
 firewalld_zones:
   - name: public
     short: "Public"
@@ -180,8 +189,10 @@ firewalld_zones:
 ```
 
 ### Add a new zone
+
 Add a new zone "mgt" and trust some sources
-```
+
+```yaml
 firewalld_zones:
   - name: mgt
     short: "MGT"
@@ -192,22 +203,26 @@ firewalld_zones:
       - address: 5.6.7.8/32
 ```
 
-### Allow a service temporary (until reload)
-```
+### Allow a service temporary (until restart)
+
+```yaml
 firewalld:
   - service: https
     state: enabled
 ```
 
 ### Change default zone
-```
+
+```yaml
 firewalld_conf:
  DefaultZone: "myzone"
 ```
 
 ## TODO
+
 * firewalld_helpers
 * lockdown-whitelist.xml
 
 ## Author
+
 Paul Trunk <mail@p7k.org>
