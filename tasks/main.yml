@@ -25,7 +25,7 @@
 
 - name: Configure firewalld.conf
   ini_file:
-    path: /etc/firewalld/firewalld.conf
+    path: "{{ firewalld_conf_file }}"
     no_extra_spaces: yes
     section: ''
     option: "{{ item.key }}"

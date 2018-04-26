@@ -5,6 +5,7 @@
 firewalld_install: true
 
 ## firewalld.conf changes, e.g. change default zone
+firewalld_conf_file: /etc/firewalld/firewalld.conf
 firewalld_conf: {}
 
 ## Use the firewalld ansible module. Useful for non permanent rules
