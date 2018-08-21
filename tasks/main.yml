@@ -1,14 +1,8 @@
 ---
 
 - name: Setup firewalld
-  tags: firewalld_install
   when: firewalld_install
   block:
-    - name: Ensure no other firewall is installed
-      package:
-        name: [shorewall6,shorewall,ufw]
-        state: absent
-
     - name: Install firewalld
       package:
         name: firewalld
@@ -32,10 +26,8 @@
     value: "{{ item.value }}"
   with_dict: "{{ firewalld_conf }}"
   notify: reload firewalld
-  tags: firewalld_conf
 
 - name: Manage firewalld ipsets
-  tags: firewalld_ipsets
   block:
     - name: Configure firewalld ipsets
       template:
@@ -59,7 +51,6 @@
       when: item|replace('.xml','') not in firewalld_ipsets|map(attribute='name')|list
 
 - name: Manage firewalld services
-  tags: firewalld_services
   block:
     - name: Configure firewalld services
       template:
@@ -83,7 +74,6 @@
       when: item|replace('.xml','') not in firewalld_services|map(attribute='name')|list
 
 - name: Manage firewalld zones
-  tags: firewalld_zones
   block:
     - name: Configure firewalld zones
       template:
