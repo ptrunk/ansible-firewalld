@@ -53,8 +53,7 @@ firewalld_ipsets:
     short: ""
     description: ""
     option:
-    - name: ""
-      value: ""
+      name: value
     entry: []
 ```
 
