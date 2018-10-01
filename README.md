@@ -3,6 +3,7 @@
 Install and configure firewalld (<http://www.firewalld.org/>) on
 
 * Archlinux
+* Debian (Experimentell)
 * CentOS
 * Fedora
 * RHEL
