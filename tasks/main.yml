@@ -35,6 +35,8 @@
         dest: /etc/firewalld/ipsets/{{ item.name }}.xml
       with_items: "{{ firewalld_ipsets }}"
       notify: reload firewalld
+      loop_control:
+        label: "{{ item.name }}"
 
     - name: Get ipsets in /etc/firewalld/ipsets
       shell: ls -1 /etc/firewalld/ipsets/ | grep -E .xml$
@@ -58,6 +60,8 @@
         dest: /etc/firewalld/services/{{ item.name }}.xml
       with_items: "{{ firewalld_services }}"
       notify: reload firewalld
+      loop_control:
+        label: "{{ item.name }}"
 
     - name: Get services in /etc/firewalld/services
       shell: ls -1 /etc/firewalld/services/ | grep -E .xml$
@@ -81,6 +85,8 @@
         dest: /etc/firewalld/zones/{{ item.name }}.xml
       with_items: "{{ firewalld_zones }}"
       notify: reload firewalld
+      loop_control:
+        label: "{{ item.name }}"
 
     - name: Get zones in /etc/firewalld/zones
       shell: ls -1 /etc/firewalld/zones/ | grep -E .xml$
