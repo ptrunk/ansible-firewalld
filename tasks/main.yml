@@ -12,9 +12,9 @@
         name: python-firewall
       when: ansible_distribution in ['CentOS','RedHat']
 
-    - name: Install python{{ '3' if ansible_python_version is version_compare('3','>=') else '' }}-firewall for Fedora
+    - name: Install python{{ '3' if ansible_python_version is version('3','>=') else '' }}-firewall for Fedora
       package:
-        name: python{{ '3' if ansible_python_version is version_compare('3', '<') else '' }}-firewall
+        name: python{{ '3' if ansible_python_version is version('3', '<') else '' }}-firewall
       when: ansible_distribution == "Fedora"
 
 - name: Configure firewalld.conf
