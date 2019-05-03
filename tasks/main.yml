@@ -7,14 +7,14 @@
       package:
         name: firewalld
 
-    - name: Install python-firewall for CentOS/RedHat
+    - name: Install python-firewall on CentOS/RedHat
       package:
         name: python-firewall
       when: ansible_distribution in ['CentOS','RedHat']
 
-    - name: Install python{{ '3' if ansible_python_version is version('3','>=') else '' }}-firewall for Fedora
+    - name: Install python3-firewall on Fedora
       package:
-        name: python{{ '3' if ansible_python_version is version('3', '<') else '' }}-firewall
+        name: python3-firewall
       when: ansible_distribution == "Fedora"
 
 - name: Configure firewalld.conf
